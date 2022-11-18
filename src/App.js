@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Cars from "./api/cars.json";
+import Car_details from "./components/Car_details";
+import { useRef, useState } from "react";
 
 function App() {
+  let scrl = useRef(null);
+  const [scrollX, setscrollX] = useState(0);
+  const slide = (shift) => {
+    scrl.current.scrollLeft += shift;
+    setscrollX(scrollX + shift);
+  };
+
+  const scrollCheck = () => {
+    setscrollX(scrl.current.scrollLeft);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="app" ref={scrl} onScroll={scrollCheck}>
+        {Cars.map((item) => (
+          <Car_details
+            key={item.id}
+            type={item.bodyType}
+            name={item.modelName}
+            modelType={item.modelType}
+            carImage={item.imageUrl}
+          />
+        ))}
+      </div>
+      <div className="app-btn_container">
+        <button className="left-btn button" onClick={() => slide(-400)}>
+          <img src="./images/chevron-circled.svg" alt="Right Button" />
+        </button>
+        <button className="right-btn button" onClick={() => slide(+400)}>
+          <img src="./images/chevron-circled.svg" alt="Left Button" />
+        </button>
+      </div>
+    </>
   );
 }
 
