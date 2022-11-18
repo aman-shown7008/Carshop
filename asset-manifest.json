@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Carshop/static/css/main.2d2c9ca0.css",
+    "main.js": "/Carshop/static/js/main.9ac5e105.js",
+    "index.html": "/Carshop/index.html",
+    "main.2d2c9ca0.css.map": "/Carshop/static/css/main.2d2c9ca0.css.map",
+    "main.9ac5e105.js.map": "/Carshop/static/js/main.9ac5e105.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d2c9ca0.css",
+    "static/js/main.9ac5e105.js"
+  ]
+}
